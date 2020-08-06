@@ -13,6 +13,7 @@ import wooteco.subway.maps.station.application.StationService;
 import wooteco.subway.maps.station.domain.Station;
 import wooteco.subway.maps.station.dto.StationResponse;
 import org.springframework.stereotype.Service;
+import wooteco.subway.members.member.domain.LoginMember;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -50,6 +51,15 @@ public class MapService {
         List<Line> usedLines = lines.stream().filter(line -> subwayPath.extractLineId().contains(line.getId())).collect(Collectors.toList());
         int highestExtraFare = usedLines.stream().mapToInt(Line::getExtraFare).max().orElse(0);
         return PathResponseAssembler.assemble(subwayPath, stations, highestExtraFare);
+    }
+
+    public PathResponse findPath(LoginMember member, Long source, Long target, PathType type) {
+        List<Line> lines = lineService.findLines();
+        SubwayPath subwayPath = pathService.findPath(lines, source, target, type);
+        Map<Long, Station> stations = stationService.findStationsByIds(subwayPath.extractStationId());
+        List<Line> usedLines = lines.stream().filter(line -> subwayPath.extractLineId().contains(line.getId())).collect(Collectors.toList());
+        int highestExtraFare = usedLines.stream().mapToInt(Line::getExtraFare).max().orElse(0);
+        return PathResponseAssembler.assemble(member, subwayPath, stations, highestExtraFare);
     }
 
     private Map<Long, Station> findStations(List<Line> lines) {
