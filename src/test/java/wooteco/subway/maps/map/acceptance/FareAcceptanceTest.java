@@ -50,11 +50,11 @@ public class FareAcceptanceTest extends AcceptanceTest {
         지하철_노선에_지하철역_등록되어_있음(이호선, 교대역, 강남역, 20, 2);
 
         지하철_노선에_지하철역_등록되어_있음(신분당선, null, 강남역, 0, 0);
-        지하철_노선에_지하철역_등록되어_있음(신분당선, 강남역, 양재역, 15, 1);
+        지하철_노선에_지하철역_등록되어_있음(신분당선, 강남역, 양재역, 15, 2);
 
         지하철_노선에_지하철역_등록되어_있음(삼호선, null, 교대역, 0, 0);
         지하철_노선에_지하철역_등록되어_있음(삼호선, 교대역, 남부터미널역, 20, 2);
-        지하철_노선에_지하철역_등록되어_있음(삼호선, 남부터미널역, 양재역, 25, 2);
+        지하철_노선에_지하철역_등록되어_있음(삼호선, 남부터미널역, 양재역, 25, 1);
     }
 
     @DisplayName("두 역의 최단 거리 경로에 해당하는 요금을 조회한다.")
@@ -65,7 +65,18 @@ public class FareAcceptanceTest extends AcceptanceTest {
 
         //then
         적절한_경로를_응답(response, Lists.newArrayList(교대역, 강남역, 양재역));
-        총_거리와_소요_시간과_요금을_함께_응답함(response, 35, 3, 2250);
+        총_거리와_소요_시간과_요금을_함께_응답함(response, 35, 4, 2250);
+    }
+
+    @DisplayName("두 역의 최소 시간 경로에 해당하는 요금을 조회한다.")
+    @Test
+    void findFareByShortestDurationPath() {
+        //when
+        ExtractableResponse<Response> response = 거리_경로_조회_요청("DURATION", 1L, 3L);
+
+        //then
+        적절한_경로를_응답(response, Lists.newArrayList(교대역, 남부터미널역, 양재역));
+        총_거리와_소요_시간과_요금을_함께_응답함(response, 45, 3, 2850);
     }
 
 
