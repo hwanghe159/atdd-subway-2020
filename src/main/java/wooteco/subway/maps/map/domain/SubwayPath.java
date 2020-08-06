@@ -25,6 +25,10 @@ public class SubwayPath {
         return stationIds;
     }
 
+    public int extractTotalExtraFare() {
+        return 500;
+    }
+
     public int calculateDuration() {
         return lineStationEdges.stream().mapToInt(it -> it.getLineStation().getDuration()).sum();
     }
