@@ -41,13 +41,13 @@ public class Line extends BaseEntity {
         this.extraFare = extraFare;
     }
 
-
     public void update(Line line) {
         this.name = line.getName();
         this.startTime = line.getStartTime();
         this.endTime = line.getEndTime();
         this.intervalTime = line.getIntervalTime();
         this.color = line.getColor();
+        this.extraFare = line.getExtraFare();
     }
 
     public void addLineStation(LineStation lineStation) {

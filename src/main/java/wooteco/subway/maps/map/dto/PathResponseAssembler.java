@@ -9,15 +9,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class PathResponseAssembler {
-    public static PathResponse assemble(SubwayPath subwayPath, Map<Long, Station> stations) {
+    public static PathResponse assemble(SubwayPath subwayPath, Map<Long, Station> stations, int highestExtraFare) {
         List<StationResponse> stationResponses = subwayPath.extractStationId().stream()
                 .map(it -> StationResponse.of(stations.get(it)))
                 .collect(Collectors.toList());
 
         int distance = subwayPath.calculateDistance();
-        int totalExtraFare = subwayPath.extractTotalExtraFare();
-
-        return new PathResponse(stationResponses, subwayPath.calculateDuration(), distance, totalExtraFare + 1250 + calculateOverFare(distance - 10));
+        
+        return new PathResponse(stationResponses, subwayPath.calculateDuration(), distance, highestExtraFare + 1250 + calculateOverFare(distance - 10));
     }
 
     private static int calculateOverFare(int distance) {

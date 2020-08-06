@@ -47,8 +47,9 @@ public class MapService {
         List<Line> lines = lineService.findLines();
         SubwayPath subwayPath = pathService.findPath(lines, source, target, type);
         Map<Long, Station> stations = stationService.findStationsByIds(subwayPath.extractStationId());
-
-        return PathResponseAssembler.assemble(subwayPath, stations);
+        List<Line> usedLines = lines.stream().filter(line -> subwayPath.extractLineId().contains(line.getId())).collect(Collectors.toList());
+        int highestExtraFare = usedLines.stream().mapToInt(Line::getExtraFare).max().orElse(0);
+        return PathResponseAssembler.assemble(subwayPath, stations, highestExtraFare);
     }
 
     private Map<Long, Station> findStations(List<Line> lines) {

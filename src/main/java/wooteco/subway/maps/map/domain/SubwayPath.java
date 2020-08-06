@@ -25,8 +25,10 @@ public class SubwayPath {
         return stationIds;
     }
 
-    public int extractTotalExtraFare() {
-        return 500;
+    public List<Long> extractLineId() {
+        return lineStationEdges.stream()
+                .map(LineStationEdge::getLineId)
+                .collect(Collectors.toList());
     }
 
     public int calculateDuration() {
