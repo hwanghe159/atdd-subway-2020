@@ -19,8 +19,8 @@ const mutations = {
 }
 
 const actions = {
-  async searchPath({ commit }, {}) {
-    return PathService.get().then(({ data }) => {
+  async searchPath({ commit }, sourceId, targetId, type) {
+    return PathService.get(sourceId, targetId, type).then(({ data }) => {
       commit('setPath', data)
     })
   }
