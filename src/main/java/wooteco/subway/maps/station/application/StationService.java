@@ -6,12 +6,14 @@ import wooteco.subway.maps.station.dto.StationCreateRequest;
 import wooteco.subway.maps.station.dto.StationResponse;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class StationService {
     private StationRepository stationRepository;
 

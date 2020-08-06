@@ -10,12 +10,14 @@ import wooteco.subway.members.favorite.dto.FavoriteResponse;
 import wooteco.subway.members.member.domain.LoginMember;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class FavoriteService {
     private FavoriteRepository favoriteRepository;
     private StationService stationService;
