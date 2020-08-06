@@ -16,7 +16,7 @@ public class MapControllerTest {
     @Test
     void findPath() {
         MapService mapService = mock(MapService.class);
-        MapController controller = new MapController(mapService);
+        PathController controller = new PathController(mapService);
         when(mapService.findPath(any(), anyLong(), anyLong(), any())).thenReturn(new PathResponse());
 
         ResponseEntity<PathResponse> entity = controller.findPathWithToken(null, 1L, 2L, PathType.DISTANCE);

@@ -2,9 +2,7 @@
   <div class="d-flex flex-column justify-center height-100vh-65px">
     <div class="d-flex justify-center relative">
       <v-card width="500" max-width="600" max-height="600" class="card-border">
-        <v-card-title class="font-weight-bold justify-center relative">
-          경로 검색
-        </v-card-title>
+        <v-card-title class="font-weight-bold justify-center relative">경로 검색</v-card-title>
         <v-card-text class="relative mt-2 px-0 line-list-container d-flex flex-column">
           <div class="px-4 pb-6">
             <div class="d-flex width-100">
@@ -100,40 +98,40 @@
                             <v-row>
                               <v-col cols="4">
                                 <v-select
-                                        v-model="departureTimeView.dayTime"
-                                        :items="departureTimeSelectView.dayTime"
-                                        width="400"
-                                        color="grey darken-1"
-                                        item-color="amber darken-3"
-                                        :rules="rules.departureTime.dayTime"
-                                        outlined
-                                        dense
+                                  v-model="departureTimeView.dayTime"
+                                  :items="departureTimeSelectView.dayTime"
+                                  width="400"
+                                  color="grey darken-1"
+                                  item-color="amber darken-3"
+                                  :rules="rules.departureTime.dayTime"
+                                  outlined
+                                  dense
                                 ></v-select>
                               </v-col>
                               <v-col cols="4">
                                 <v-select
-                                        v-model="departureTimeView.hour"
-                                        :items="departureTimeSelectView.hour"
-                                        label="시"
-                                        width="400"
-                                        color="grey darken-1"
-                                        item-color="amber darken-3"
-                                        :rules="rules.departureTime.hour"
-                                        outlined
-                                        dense
+                                  v-model="departureTimeView.hour"
+                                  :items="departureTimeSelectView.hour"
+                                  label="시"
+                                  width="400"
+                                  color="grey darken-1"
+                                  item-color="amber darken-3"
+                                  :rules="rules.departureTime.hour"
+                                  outlined
+                                  dense
                                 ></v-select>
                               </v-col>
                               <v-col cols="4">
                                 <v-select
-                                        v-model="departureTimeView.minute"
-                                        :items="departureTimeSelectView.minute"
-                                        label="분"
-                                        width="400"
-                                        color="grey darken-1"
-                                        item-color="amber darken-3"
-                                        :rules="rules.departureTime.minute"
-                                        outlined
-                                        dense
+                                  v-model="departureTimeView.minute"
+                                  :items="departureTimeSelectView.minute"
+                                  label="분"
+                                  width="400"
+                                  color="grey darken-1"
+                                  item-color="amber darken-3"
+                                  :rules="rules.departureTime.minute"
+                                  outlined
+                                  dense
                                 ></v-select>
                               </v-col>
                             </v-row>
@@ -255,7 +253,7 @@ export default {
         if (this.stations.length <= 0) {
           return
         }
-        this.allStationsView = this.stations.map((station) => {
+        this.allStationsView = this.stations.map(station => {
           return {
             text: station.name,
             value: station.id

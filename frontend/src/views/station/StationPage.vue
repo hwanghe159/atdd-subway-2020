@@ -2,9 +2,7 @@
   <div class="d-flex flex-column justify-center height-100vh-65px">
     <div class="d-flex justify-center relative">
       <v-card width="500" max-width="600" max-height="200" class="card-border">
-        <v-card-title class="font-weight-bold justify-center">
-          지하철 역 관리
-        </v-card-title>
+        <v-card-title class="font-weight-bold justify-center">지하철 역 관리</v-card-title>
         <v-card-text>
           <v-form ref="stationForm" v-model="valid" @submit.prevent>
             <div class="d-flex">

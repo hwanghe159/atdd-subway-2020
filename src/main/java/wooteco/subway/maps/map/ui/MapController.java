@@ -19,14 +19,6 @@ public class MapController {
         this.mapService = mapService;
     }
 
-    @GetMapping("/paths")
-    public ResponseEntity<PathResponse> findPathWithToken(@AuthenticationPrincipal LoginMember loginMember,
-                                                 @RequestParam Long source,
-                                                 @RequestParam Long target,
-                                                 @RequestParam PathType type) {
-        return ResponseEntity.ok(mapService.findPath(loginMember, source, target, type));
-    }
-
     @GetMapping("/maps")
     public ResponseEntity<MapResponse> findMap() {
         MapResponse response = mapService.findMap();
